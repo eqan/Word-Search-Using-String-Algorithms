@@ -76,9 +76,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(37, 114);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(135, 17);
             this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Text = "Match whole word only";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -86,9 +86,9 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(37, 137);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
+            this.checkBox2.Size = new System.Drawing.Size(82, 17);
             this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.Text = "Match case";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Main
