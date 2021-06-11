@@ -26,6 +26,7 @@ namespace Word_Search
                     show_kmp_results();
                     break;
                 default:
+                    Console.WriteLine("Option out of bounds!\n");
                     break;
             }
         }
@@ -53,6 +54,28 @@ namespace Word_Search
             }
         }
 
+        private void show_rabinkarp_results()
+        {
+            String textFile = "exp1.txt";
+            String pattern = textBox1.Text;
+            int ptnLength = pattern.Length;
+            int readLength;
+            int row = 1;
+            textBox2.Text = "---RESULT BY RABINKARP FORCE---\r\n\r\n";
+            using (StreamReader file = new StreamReader(textFile))
+            {
+                while ((fileString = file.ReadLine()) != null)
+                {
+                    readLength = fileString.Length;
+                    if (RabinKarp(fileString, pattern) > 0)
+                    {
+                        textBox2.Text += "\r\nRow Number: " + row.ToString() + "\r\n\r\n";
+                    }
+                    row++;
+                }
+                file.Close();
+            }
+        }
 
         private void show_kmp_results()
         {
@@ -68,29 +91,6 @@ namespace Word_Search
                 {
                     readLength = fileString.Length;
                     if (KMP(fileString, pattern, readLength, ptnLength) > 0)
-                    {
-                        textBox2.Text += "\r\nRow Number: " + row.ToString() + "\r\n\r\n";
-                    }
-                    row++;
-                }
-                file.Close();
-            }
-        }
-
-        private void show_rabinkarp_results()
-        {
-            String textFile = "exp1.txt";
-            String pattern = textBox1.Text;
-            int ptnLength = pattern.Length;
-            int readLength;
-            int row = 1;
-            textBox2.Text = "---RESULT BY RABINKARP FORCE---\r\n\r\n";
-            using (StreamReader file = new StreamReader(textFile))
-            {
-                while ((fileString = file.ReadLine()) != null)
-                {
-                    readLength = fileString.Length;
-                    if (RabinKarp(fileString, pattern) > 0)
                     {
                         textBox2.Text += "\r\nRow Number: " + row.ToString() + "\r\n\r\n";
                     }
@@ -178,9 +178,6 @@ namespace Word_Search
             return -1;
         }
 
-
-
-
         public int KMP(string Text, string Pattern, int N, int M)
         {
             String tmp = "";
@@ -267,8 +264,6 @@ namespace Word_Search
             return -1;
         }
 
-
-
         public int BruteForce(string Text, string Pattern, int N, int M)
         {
             String tmp = "";
@@ -322,7 +317,7 @@ namespace Word_Search
                         }
                     }
                     textBox2.Text += "Word Found : " + tmp;
-                    textBox2.Text += "\r\nColumn Number : " + i.ToString() + "\r\n\r\n";
+                    textBox2.Text += "\r\nColumn Number : " + i.ToString() + "\r\n";
                     checker = true;
                     i++;
                 }
