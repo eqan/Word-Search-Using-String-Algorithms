@@ -5,15 +5,25 @@ namespace Word_Search
 {
     public partial class Main : Form
     {
-        string fileString;
+        string fileContent;
         bool checker = false;
+        string filePath = null;
         public Main()
         {
             InitializeComponent();
         }
+        private void openfile_btn_Click(object sender, EventArgs e)
+        {
+            get_file();
+        }
 
         private void findbutton_click(object sender, EventArgs e)
         {
+            if (filePath == null)
+            {
+                toolStripStatusLabel1.Text = "No file found!\n";
+                return;    
+            }
             switch(algorithm_menu.SelectedIndex)
             {
                 case 0:
@@ -26,25 +36,40 @@ namespace Word_Search
                     show_kmp_results();
                     break;
                 default:
-                    Console.WriteLine("Option out of bounds!\n");
+                    toolStripStatusLabel1.Text = "Option out of bound!";
                     break;
+            }
+        }
+
+        private void get_file()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = System.Windows.Forms.Application.StartupPath;
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    toolStripStatusLabel1.Text = "Current file path: " + filePath;
+                }
             }
         }
 
         private void show_bruteforce_results()
         {
-            String textFile = "exp1.txt";
             String pattern = textBox1.Text;
             int ptnLength = pattern.Length;
             int readLength;
             int row = 1;
             textBox2.Text = "---RESULT BY BRUTE FORCE---\r\n\r\n";
-            using (StreamReader file = new StreamReader(textFile))
+            using (StreamReader file = new StreamReader(filePath))
             {
-                while ((fileString = file.ReadLine()) != null)
+                while ((fileContent = file.ReadLine()) != null)
                 {
-                    readLength = fileString.Length;
-                    if (BruteForce(fileString, pattern, readLength, ptnLength) > 0)
+                    readLength = fileContent.Length;
+                    if (BruteForce(fileContent, pattern, readLength, ptnLength) > 0)
                     {
                         textBox2.Text += "\r\nRow Number: " + row.ToString() + "\r\n\r\n";
                     }
@@ -56,18 +81,17 @@ namespace Word_Search
 
         private void show_rabinkarp_results()
         {
-            String textFile = "exp1.txt";
             String pattern = textBox1.Text;
             int ptnLength = pattern.Length;
             int readLength;
             int row = 1;
             textBox2.Text = "---RESULT BY RABINKARP FORCE---\r\n\r\n";
-            using (StreamReader file = new StreamReader(textFile))
+            using (StreamReader file = new StreamReader(filePath))
             {
-                while ((fileString = file.ReadLine()) != null)
+                while ((fileContent = file.ReadLine()) != null)
                 {
-                    readLength = fileString.Length;
-                    if (RabinKarp(fileString, pattern) > 0)
+                    readLength = fileContent.Length;
+                    if (RabinKarp(fileContent, pattern) > 0)
                     {
                         textBox2.Text += "\r\nRow Number: " + row.ToString() + "\r\n\r\n";
                     }
@@ -79,18 +103,17 @@ namespace Word_Search
 
         private void show_kmp_results()
         {
-            String textFile = "exp1.txt";
             String pattern = textBox1.Text;
             int ptnLength = pattern.Length;
             int readLength;
             int row = 1;
             textBox2.Text = "---RESULT BY KMP---\r\n\r\n";
-            using (StreamReader file = new StreamReader(textFile))
+            using (StreamReader file = new StreamReader(filePath))
             {
-                while ((fileString = file.ReadLine()) != null)
+                while ((fileContent = file.ReadLine()) != null)
                 {
-                    readLength = fileString.Length;
-                    if (KMP(fileString, pattern, readLength, ptnLength) > 0)
+                    readLength = fileContent.Length;
+                    if (KMP(fileContent, pattern, readLength, ptnLength) > 0)
                     {
                         textBox2.Text += "\r\nRow Number: " + row.ToString() + "\r\n\r\n";
                     }
@@ -104,12 +127,12 @@ namespace Word_Search
         {
             if (pat.Length == 0)
             {
-                textBox2.Text = "No content entered!";
+                toolStripStatusLabel1.Text = "No Content Entered!";
                 return -1;
             }
             String tmp;
             int d = 256;
-            int prime = 13;
+            int prime = 101;
             int M = pat.Length;
             int N = txt.Length;
             int i, j;
@@ -180,6 +203,7 @@ namespace Word_Search
                 checker = false;
                 return 1;
             }
+            toolStripStatusLabel1.Text = "Command executed successfully!";
             return -1;
         }
 
@@ -271,6 +295,7 @@ namespace Word_Search
                 checker = false;
                 return 1;
             }
+            toolStripStatusLabel1.Text = "Command executed successfully!";
             return -1;
         }
 
@@ -342,7 +367,9 @@ namespace Word_Search
                 checker = false;
                 return 1;
             }
+            toolStripStatusLabel1.Text = "Command executed successfully!";
             return -1;
         }
+
     }
 }
