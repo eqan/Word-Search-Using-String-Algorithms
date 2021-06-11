@@ -125,7 +125,7 @@ namespace Word_Search
 
         public int RabinKarp(string txt, string pat)
         {
-            if (pat.Length == 0)
+            if (pat.Length == 0 || txt.Length == 0)
             {
                 toolStripStatusLabel1.Text = "No Content Entered!";
                 return -1;
