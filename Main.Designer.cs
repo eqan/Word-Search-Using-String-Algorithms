@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.find_btn = new System.Windows.Forms.Button();
-            this.cancel_btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -37,8 +36,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.algorithm_menu = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.openfile_btn = new System.Windows.Forms.Button();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.openfile_btn = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,15 +50,6 @@
             this.find_btn.Text = "Find Next";
             this.find_btn.UseVisualStyleBackColor = true;
             this.find_btn.Click += new System.EventHandler(this.findbutton_click);
-            // 
-            // cancel_btn
-            // 
-            this.cancel_btn.Location = new System.Drawing.Point(270, 70);
-            this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(75, 23);
-            this.cancel_btn.TabIndex = 1;
-            this.cancel_btn.Text = "Cancel";
-            this.cancel_btn.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -130,6 +120,12 @@
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(119, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
             // openfile_btn
             // 
             this.openfile_btn.Location = new System.Drawing.Point(270, 10);
@@ -139,12 +135,6 @@
             this.openfile_btn.Text = "Open File";
             this.openfile_btn.UseVisualStyleBackColor = true;
             this.openfile_btn.Click += new System.EventHandler(this.openfile_btn_Click);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(119, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // Main
             // 
@@ -159,7 +149,6 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.find_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Main";
@@ -174,7 +163,6 @@
         #endregion
 
         private System.Windows.Forms.Button find_btn;
-        private System.Windows.Forms.Button cancel_btn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox1;
