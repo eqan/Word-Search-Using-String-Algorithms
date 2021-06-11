@@ -104,6 +104,7 @@
             // 
             // algorithm_menu
             // 
+            this.algorithm_menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.algorithm_menu.FormattingEnabled = true;
             this.algorithm_menu.Items.AddRange(new object[] {
             "Brute Force",
@@ -130,7 +131,7 @@
             this.Controls.Add(this.find_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "Word Search";
             this.ResumeLayout(false);
             this.PerformLayout();
 

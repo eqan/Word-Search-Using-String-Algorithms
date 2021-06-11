@@ -102,9 +102,14 @@ namespace Word_Search
 
         public int RabinKarp(string txt, string pat)
         {
+            if (pat.Length == 0)
+            {
+                textBox2.Text = "No content entered!";
+                return -1;
+            }
             String tmp;
             int d = 256;
-            int prime = 7;
+            int prime = 13;
             int M = pat.Length;
             int N = txt.Length;
             int i, j;
@@ -180,6 +185,11 @@ namespace Word_Search
 
         public int KMP(string Text, string Pattern, int N, int M)
         {
+            if (Pattern.Length == 0)
+            {
+                textBox2.Text = "No content entered!";
+                return -1;
+            }
             String tmp = "";
             int[] prefixArray = new int[M];
             int matches = 0;
@@ -266,6 +276,11 @@ namespace Word_Search
 
         public int BruteForce(string Text, string Pattern, int N, int M)
         {
+            if (Pattern.Length == 0)
+            {
+                textBox2.Text = "No content entered!";
+                return -1;
+            }
             String tmp = "";
             for (int i = 0; i <= N - M; i++)
             {
